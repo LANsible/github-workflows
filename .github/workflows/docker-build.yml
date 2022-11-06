@@ -104,6 +104,8 @@ jobs:
 
       - name: Retag to tag and latest
         uses: LANsible/copy-image-manifest-action@main
+        with:
+          source: ${{ inputs.image_name }}:${{ github.sha }}
           targets: |
             ${{ inputs.image_name }}:${{ env.tag_name }},
             ${{ inputs.image_name }}:latest,

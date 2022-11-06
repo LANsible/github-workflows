@@ -12,6 +12,7 @@ on:
 jobs:
   build_sha:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && ! contains(github.ref, 'refs/tags/')
     # https://docs.docker.com/build/ci/github-actions/examples/#multi-platform-images
     steps:
       - name: Checkout

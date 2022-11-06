@@ -53,10 +53,10 @@ jobs:
 
   retag:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    needs: build_sha
     steps:
       - name: Retag to latest
-        uses: LANsible/copy-manifest-action@main
+        uses: LANsible/copy-image-manifest-action@main
         with:
           source: ${{ inputs.image_name }}:${{ github.sha }}
           target: ${{ inputs.image_name }}:test

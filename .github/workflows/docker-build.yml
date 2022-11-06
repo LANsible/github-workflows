@@ -50,3 +50,13 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ inputs.image_name }}:${{ github.sha }},ghcr.io/${{ inputs.image_name }}:${{ github.sha }}
+
+  retag:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Retag to latest
+        uses: LANsible/copy-manifest-action@main
+        with:
+          source: ${{ inputs.image_name }}:${{ github.sha }}
+          target: ${{ inputs.image_name }}:test

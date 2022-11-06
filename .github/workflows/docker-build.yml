@@ -68,11 +68,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get branch name
+        run: echo "branch_name=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Retag to branch name
         uses: LANsible/copy-image-manifest-action@main
         with:
           source: ${{ inputs.image_name }}:${{ github.sha }}
-          targets: ${{ inputs.image_name }}:${GITHUB_REF##*/},ghcr.io/${{ inputs.image_name }}:${GITHUB_REF##*/}
+          targets: ${{ inputs.image_name }}:${{ env.branch_name }},ghcr.io/${{ inputs.image_name }}:${{ env.branch_name }}
 
   # retag_tag:
   #   runs-on: ubuntu-latest

@@ -8,11 +8,13 @@ on:
       image_name:
         required: true
         type: string
+      build_args:
+        type: string
 
 jobs:
   build_sha:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && ! contains(github.ref, 'refs/tags/')
+    if: ! contains(github.ref, 'refs/tags/')
     # https://docs.docker.com/build/ci/github-actions/examples/#multi-platform-images
     steps:
       - name: Checkout
@@ -50,6 +52,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
+          build-args: ${{ inputs.build_args }}
           tags: |
             ${{ inputs.image_name }}:${{ github.sha }}
             ghcr.io/${{ inputs.image_name }}:${{ github.sha }}

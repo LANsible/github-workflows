@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build_sha:
     runs-on: ubuntu-latest
-    if: "! contains(github.ref, 'refs/tags/')"
+    if: ${{ !contains(github.ref, 'refs/tags/') }}
     # https://docs.docker.com/build/ci/github-actions/examples/#multi-platform-images
     steps:
       - name: Checkout
@@ -93,7 +93,7 @@ jobs:
   retag_tag:
     runs-on: ubuntu-latest
     # https://github.com/orgs/community/discussions/25692
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    if: ${{ contains(github.ref, 'refs/tags/') }}
     steps:
       - name: Login to Docker Hub
         uses: docker/login-action@v2

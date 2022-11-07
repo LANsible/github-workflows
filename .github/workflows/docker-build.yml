@@ -89,6 +89,7 @@ jobs:
           targets: |
             ${{ inputs.image_name }}:${{ env.branch_name }},
             ghcr.io/${{ inputs.image_name }}:${{ env.branch_name }}
+          wait_architecture: arm64
 
   retag_tag:
     runs-on: ubuntu-latest
@@ -120,3 +121,4 @@ jobs:
             ${{ inputs.image_name }}:latest,
             ghcr.io/${{ inputs.image_name }}:${{ env.tag_name }},
             ghcr.io/${{ inputs.image_name }}:latest
+          wait_architecture: arm64

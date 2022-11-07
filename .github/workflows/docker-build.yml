@@ -51,7 +51,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ inputs.image_name }}:${{ github.sha }},
+            ${{ inputs.image_name }}:${{ github.sha }}
             ghcr.io/${{ inputs.image_name }}:${{ github.sha }}
 
   retag_branch:
@@ -79,7 +79,7 @@ jobs:
         with:
           source: ${{ inputs.image_name }}:${{ github.sha }}
           targets: |
-            ${{ inputs.image_name }}:${{ env.branch_name }},
+            ${{ inputs.image_name }}:${{ env.branch_name }}
             ghcr.io/${{ inputs.image_name }}:${{ env.branch_name }}
 
   retag_tag:
@@ -108,7 +108,7 @@ jobs:
         with:
           source: ${{ inputs.image_name }}:${{ github.sha }}
           targets: |
-            ${{ inputs.image_name }}:${{ env.tag_name }},
-            ${{ inputs.image_name }}:latest,
-            ghcr.io/${{ inputs.image_name }}:${{ env.tag_name }},
+            ${{ inputs.image_name }}:${{ env.tag_name }}
+            ${{ inputs.image_name }}:latest
+            ghcr.io/${{ inputs.image_name }}:${{ env.tag_name }}
             ghcr.io/${{ inputs.image_name }}:latest

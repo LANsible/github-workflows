@@ -11,6 +11,11 @@ on:
       build_args:
         type: string
 
+# Cancel previous run for same branch
+concurrency:
+  group: ${{ github.ref }}-1
+  cancel-in-progress: true
+
 jobs:
   build_sha:
     runs-on: ubuntu-latest

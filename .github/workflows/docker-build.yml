@@ -23,6 +23,7 @@ jobs:
   build_sha:
     runs-on: self-hosted
     if: ${{ !contains(github.ref, 'refs/tags/') }}
+    timeout-minutes: 1440  # 24h
     # https://docs.docker.com/build/ci/github-actions/examples/#multi-platform-images
     steps:
       - name: Checkout

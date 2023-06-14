@@ -15,8 +15,8 @@ on:
         type: string
       cache_dir:
         type: string
-        description: "Where the cache is added into the container. Default: `/root/.cache/go-build`"
-        default: /root/.cache/go-build
+        description: "Where the cache is added into the container. Default: `/root/.cache/`"
+        default: /root/.cache
 
 # Cancel previous run for same branch
 concurrency:

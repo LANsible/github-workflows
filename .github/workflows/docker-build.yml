@@ -38,6 +38,7 @@ jobs:
       - name: Build Cache for Docker
         uses: actions/cache@v3
         with:
+          key: docker-cache
           path: cache/  # default cache-source of cache-dance action
 
       # https://github.com/overmindtech/buildkit-cache-dance

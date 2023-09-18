@@ -37,7 +37,7 @@ jobs:
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       # Setup cachedir which can be used to speedup builds
       # https://pythonspeed.com/articles/docker-cache-pip-downloads/

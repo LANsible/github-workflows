@@ -47,9 +47,8 @@ jobs:
           key: docker-cache
           path: cache/  # default cache-source of cache-dance action
 
-      # https://github.com/overmindtech/buildkit-cache-dance
       - name: Inject build-cache into docker
-        uses: overmindtech/buildkit-cache-dance/inject@main
+        uses: reproducible-containers/buildkit-cache-dance@v2.1.3
         with:
           cache-target: ${{ inputs.cache_dir }}
 
@@ -80,7 +79,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Extract build-cache from docker
-        uses: overmindtech/buildkit-cache-dance/extract@main
+        uses: reproducible-containers/buildkit-cache-dance@v2.1.3
         with:
           cache-target: ${{ inputs.cache_dir }}  # path in the docker container
 

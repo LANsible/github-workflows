@@ -79,7 +79,6 @@ jobs:
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.documentation=${{ github.server_url }}/${{ github.repository }}/blob/main/README.md
             org.opencontainers.image.vendor=${{ github.repository_owner }}
-          cache-from: type=gha
           tags: |
             ${{ inputs.image_name }}:${{ github.sha }}
             ghcr.io/${{ inputs.image_name }}:${{ github.sha }}

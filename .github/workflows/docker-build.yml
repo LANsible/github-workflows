@@ -72,6 +72,13 @@ jobs:
           platforms: ${{ inputs.platforms }}
           push: true
           build-args: ${{ inputs.build_args }}
+          labels: |
+            org.opencontainers.image.created=${{ steps.build_date.outputs.date }}
+            org.opencontainers.image.authors='Wilmar den Ouden <info@wilmardenouden.nl>'
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.documentation=${{ github.server_url }}/${{ github.repository }}/blob/main/README.md
+            org.opencontainers.image.vendor=${{ github.repository_owner }}
+          cache-from: type=gha
           tags: |
             ${{ inputs.image_name }}:${{ github.sha }}
             ghcr.io/${{ inputs.image_name }}:${{ github.sha }}

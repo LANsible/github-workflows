@@ -42,7 +42,7 @@ jobs:
       # Setup cachedir which can be used to speedup builds
       # https://pythonspeed.com/articles/docker-cache-pip-downloads/
       - name: Build Cache for Docker
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: docker-cache
           path: cache/  # default cache-source of cache-dance action

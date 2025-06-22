@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   build_sha:
-    runs-on: self-hosted
+    runs-on: lansible-runners
     if: ${{ !contains(github.ref, 'refs/tags/') }}
     timeout-minutes: 1440  # 24h
     # https://docs.docker.com/build/ci/github-actions/examples/#multi-platform-images
@@ -91,7 +91,7 @@ jobs:
           cache-target: ${{ inputs.cache_dir }}  # path in the docker container
 
   retag_branch:
-    runs-on: self-hosted
+    runs-on: lansible-runners
     needs: build_sha
     steps:
       - name: Login to Docker Hub
@@ -120,7 +120,7 @@ jobs:
           wait_platforms: ${{ inputs.platforms }}
 
   retag_tag:
-    runs-on: self-hosted
+    runs-on: lansible-runners
     # https://github.com/orgs/community/discussions/25692
     if: ${{ contains(github.ref, 'refs/tags/') }}
     steps:

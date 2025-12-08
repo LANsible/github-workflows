@@ -6,3 +6,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      - dependency-name: reproducible-containers/buildkit-cache-dance
+        # Ignore versions of Lodash that are equal to or greater than 1.0.0
+        versions: [ ">=2.0.0" ]
